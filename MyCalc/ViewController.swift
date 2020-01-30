@@ -98,103 +98,69 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clearEntry(_ sender: Any) {
-        display.text = "";
+        display.text = "0";
     }
     @IBAction func clear(_ sender: Any) {
-        display.text = "";
+        display.text = "0";
         opperand = "N";
         prevNum = 0;
     }
     
     
     
-    
-    @IBAction func zero(_ sender: Any) {
-        if get_num() != 0{
-            display.text = display.text! + "0";
+    func numClicked (num: String){
+        if (displayingAns || display.text == "0"){
+            display.text = num;
+            displayingAns = false;
+        } else {
+            display.text = display.text! + num;
         }
+    }
+    @IBAction func zero(_ sender: Any) {
+        numClicked(num: "0")
+        /*if get_num() != 0{
+            display.text = display.text! + "0";
+        }// */
     }
     @IBAction func one(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "1";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "1";
-        }
+        numClicked(num: "1")
     }
     @IBAction func two(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "2";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "2";
-        }
+        numClicked(num: "2")
     }
     @IBAction func three(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "3";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "3";
-        }
+        numClicked(num: "3")
     }
     @IBAction func four(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "4";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "4";
-        }
+        numClicked(num: "4")
     }
     @IBAction func five(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "5";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "5";
-        }
+        numClicked(num: "5")
     }
     @IBAction func six(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "6";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "6";
-        }
+        numClicked(num: "6")
     }
     @IBAction func seven(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "7";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "7";
-        }
+        numClicked(num: "7")
     }
     @IBAction func eight(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "8";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "8";
-        }
+        numClicked(num: "8")
     }
     @IBAction func nine(_ sender: Any) {
-        if (displayingAns || display.text == "0"){
-            display.text = "9";
-            displayingAns = false;
-        } else {
-            display.text = display.text! + "9";
-        }
+        numClicked(num: "9")
     }
     
     @IBAction func decimal(_ sender: Any) {
-        if (!(display.text?.contains("."))!){
+        if (displayingAns)
+            {display.text = "0."}
+        else if (!(display.text?.contains("."))!){
             if (get_num() == 0){
                 display.text = "0."
             } else {
                 display.text = display.text! + ".";
             }
         }
+        displayingAns = false;
     }
 }
 
